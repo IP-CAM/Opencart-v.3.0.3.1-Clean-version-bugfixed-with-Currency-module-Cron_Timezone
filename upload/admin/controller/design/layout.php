@@ -366,11 +366,11 @@ class ControllerDesignLayout extends Controller {
 		foreach ($layout_modules as $layout_module) {
 			$part = explode('.', $layout_module['code']);
 		
-			$this->load->language('extension/module/' . $part[0]);
+			$this->load->language('extension/module/' . $part[0], 'layout_modules');
 
 			if (!isset($part[1])) {
 				$data['layout_modules'][] = array(
-					'name'       => strip_tags($this->language->get('heading_title')),
+					'name'       => strip_tags($this->language->get('layout_modules')->get('heading_title')),
 					'code'       => $layout_module['code'],
 					'edit'       => $this->url->link('extension/module/' . $part[0], 'user_token=' . $this->session->data['user_token'], true),
 					'position'   => $layout_module['position'],

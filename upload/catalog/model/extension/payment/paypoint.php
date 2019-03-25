@@ -22,7 +22,7 @@ class ModelExtensionPaymentPayPoint extends Model {
 				'code'       => 'paypoint',
 				'title'      => $this->language->get('text_title'),
 				'terms'      => '',
-				'sort_order' => $this->config->get('paypoint_sort_order')
+				'sort_order' => $this->config->get('payment_paypoint_sort_order')
 			);
 		}
 

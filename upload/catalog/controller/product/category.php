@@ -217,6 +217,8 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+			$data['text_empty'] = $this->language->get('text_empty');
+
 			$data['sorts'] = array();
 
 			$data['sorts'][] = array(

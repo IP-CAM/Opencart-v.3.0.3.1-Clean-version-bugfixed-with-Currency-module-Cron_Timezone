@@ -55,7 +55,7 @@ class ControllerExtensionPaymentPPPayflowIframe extends Controller {
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_pp_express'),
+			'text' => $this->language->get('text_pp_pro_iframe'),
 			'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true),
 		);
 

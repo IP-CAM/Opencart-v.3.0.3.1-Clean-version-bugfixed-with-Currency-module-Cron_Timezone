@@ -7,6 +7,8 @@ class ControllerAccountVoucher extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
+		$data['heading_title'] = $this->language->get('heading_title');
+
 		if (!isset($this->session->data['vouchers'])) {
 			$this->session->data['vouchers'] = array();
 		}

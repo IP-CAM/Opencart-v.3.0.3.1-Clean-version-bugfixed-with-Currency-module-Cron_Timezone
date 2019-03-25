@@ -26,6 +26,8 @@ class ControllerAccountWishList extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
+		$data['heading_title'] = $this->language->get('heading_title');
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -50,6 +52,8 @@ class ControllerAccountWishList extends Controller {
 		} else {
 			$data['success'] = '';
 		}
+
+		$data['text_empty'] = $this->language->get('text_empty');
 
 		$data['products'] = array();
 

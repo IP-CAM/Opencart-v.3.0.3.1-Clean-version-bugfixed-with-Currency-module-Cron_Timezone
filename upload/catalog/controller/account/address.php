@@ -160,6 +160,8 @@ class ControllerAccountAddress extends Controller {
 			$data['success'] = '';
 		}
 
+		$data['text_empty'] = $this->language->get('text_empty');
+
 		$data['addresses'] = array();
 
 		$results = $this->model_account_address->getAddresses();

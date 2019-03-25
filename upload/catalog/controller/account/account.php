@@ -53,6 +53,15 @@ class ControllerAccountAccount extends Controller {
 		}
 		
 		$data['wishlist'] = $this->url->link('account/wishlist');
+
+        	if ($this->customer->isLogged()) {
+			$this->load->model('account/wishlist');
+
+			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), $this->model_account_wishlist->getTotalWishlist());
+		} else {
+			$data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
+		}
+
 		$data['order'] = $this->url->link('account/order', '', true);
 		$data['download'] = $this->url->link('account/download', '', true);
 		

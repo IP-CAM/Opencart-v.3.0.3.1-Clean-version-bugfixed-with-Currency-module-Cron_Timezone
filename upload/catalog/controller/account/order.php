@@ -92,6 +92,8 @@ class ControllerAccountOrder extends Controller {
 	public function info() {
 		$this->load->language('account/order');
 
+		$data['heading_title'] = $this->language->get('text_order');
+		
 		if (isset($this->request->get['order_id'])) {
 			$order_id = $this->request->get['order_id'];
 		} else {

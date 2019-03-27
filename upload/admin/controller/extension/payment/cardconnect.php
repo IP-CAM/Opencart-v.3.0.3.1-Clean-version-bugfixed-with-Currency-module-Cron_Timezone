@@ -46,84 +46,84 @@ class ControllerExtensionPaymentCardConnect extends Controller {
 			$data['payment_cardconnect_merchant_id'] = $this->config->get('payment_cardconnect_merchant_id');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_api_username'])) {
-			$data['cardconnect_api_username'] = $this->request->post('payment_cardconnect_api_username'];
+		if (isset($this->request->post['payment_cardconnect_api_username'])) {
+			$data['cardconnect_api_username'] = $this->request->post['payment_cardconnect_api_username'];
 		} else {
 			$data['cardconnect_api_username'] = $this->config->get('payment_cardconnect_api_username');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_api_password'])) {
-			$data['cardconnect_api_password'] = $this->request->post('payment_cardconnect_api_password'];
+		if (isset($this->request->post['payment_cardconnect_api_password'])) {
+			$data['cardconnect_api_password'] = $this->request->post['payment_cardconnect_api_password'];
 		} else {
 			$data['cardconnect_api_password'] = $this->config->get('payment_cardconnect_api_password');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_token'])) {
-			$data['cardconnect_token'] = $this->request->post('payment_cardconnect_token'];
+		if (isset($this->request->post['payment_cardconnect_token'])) {
+			$data['cardconnect_token'] = $this->request->post['payment_cardconnect_token'];
 		} elseif ($this->config->has('cardconnect_token')) {
 			$data['cardconnect_token'] = $this->config->get('payment_cardconnect_token');
 		} else {
 			$data['cardconnect_token'] = md5(time());
 		}
 
-		if (isset($this->request->post('payment_cardconnect_transaction'])) {
-			$data['cardconnect_transaction'] = $this->request->post('payment_cardconnect_transaction'];
+		if (isset($this->request->post['payment_cardconnect_transaction'])) {
+			$data['cardconnect_transaction'] = $this->request->post['payment_cardconnect_transaction'];
 		} else {
 			$data['cardconnect_transaction'] = $this->config->get('payment_cardconnect_transaction');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_site'])) {
-			$data['cardconnect_site'] = $this->request->post('payment_cardconnect_site'];
+		if (isset($this->request->post['payment_cardconnect_site'])) {
+			$data['cardconnect_site'] = $this->request->post['payment_cardconnect_site'];
 		} elseif ($this->config->has('cardconnect_site')) {
 			$data['cardconnect_site'] = $this->config->get('payment_cardconnect_site');
 		} else {
 			$data['cardconnect_site'] = 'fts';
 		}
 
-		if (isset($this->request->post('payment_cardconnect_environment'])) {
-			$data['cardconnect_environment'] = $this->request->post('payment_cardconnect_environment'];
+		if (isset($this->request->post['payment_cardconnect_environment'])) {
+			$data['cardconnect_environment'] = $this->request->post['payment_cardconnect_environment'];
 		} else {
 			$data['cardconnect_environment'] = $this->config->get('payment_cardconnect_environment');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_store_cards'])) {
-			$data['cardconnect_store_cards'] = $this->request->post('payment_cardconnect_store_cards'];
+		if (isset($this->request->post['payment_cardconnect_store_cards'])) {
+			$data['cardconnect_store_cards'] = $this->request->post['payment_cardconnect_store_cards'];
 		} else {
 			$data['cardconnect_store_cards'] = $this->config->get('payment_cardconnect_store_cards');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_echeck'])) {
-			$data['cardconnect_echeck'] = $this->request->post('payment_cardconnect_echeck'];
+		if (isset($this->request->post['payment_cardconnect_echeck'])) {
+			$data['cardconnect_echeck'] = $this->request->post['payment_cardconnect_echeck'];
 		} else {
 			$data['cardconnect_echeck'] = $this->config->get('payment_cardconnect_echeck');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_total'])) {
-			$data['cardconnect_total'] = $this->request->post('payment_cardconnect_total'];
+		if (isset($this->request->post['payment_cardconnect_total'])) {
+			$data['cardconnect_total'] = $this->request->post['payment_cardconnect_total'];
 		} else {
 			$data['cardconnect_total'] = $this->config->get('payment_cardconnect_total');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_geo_zone'])) {
-			$data['cardconnect_geo_zone'] = $this->request->post('payment_cardconnect_geo_zone'];
+		if (isset($this->request->post['payment_cardconnect_geo_zone'])) {
+			$data['cardconnect_geo_zone'] = $this->request->post['payment_cardconnect_geo_zone'];
 		} else {
 			$data['cardconnect_geo_zone'] = $this->config->get('payment_cardconnect_geo_zone');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_status'])) {
-			$data['cardconnect_status'] = $this->request->post('payment_cardconnect_status'];
+		if (isset($this->request->post['payment_cardconnect_status'])) {
+			$data['cardconnect_status'] = $this->request->post['payment_cardconnect_status'];
 		} else {
 			$data['cardconnect_status'] = $this->config->get('payment_cardconnect_status');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_logging'])) {
-			$data['cardconnect_logging'] = $this->request->post('payment_cardconnect_logging'];
+		if (isset($this->request->post['payment_cardconnect_logging'])) {
+			$data['cardconnect_logging'] = $this->request->post['payment_cardconnect_logging'];
 		} else {
 			$data['cardconnect_logging'] = $this->config->get('payment_cardconnect_logging');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_sort_order'])) {
-			$data['cardconnect_sort_order'] = $this->request->post('payment_cardconnect_sort_order'];
+		if (isset($this->request->post['payment_cardconnect_sort_order'])) {
+			$data['cardconnect_sort_order'] = $this->request->post['payment_cardconnect_sort_order'];
 		} else {
 			$data['cardconnect_sort_order'] = $this->config->get('payment_cardconnect_sort_order');
 		}
@@ -136,16 +136,16 @@ class ControllerExtensionPaymentCardConnect extends Controller {
 			$data['cardconnect_cron_time'] = $this->language->get('text_no_cron_time');
 		}
 
-		if (isset($this->request->post('payment_cardconnect_order_status_id_pending'])) {
-			$data['cardconnect_order_status_id_pending'] = $this->request->post('payment_cardconnect_order_status_id_pending'];
+		if (isset($this->request->post['payment_cardconnect_order_status_id_pending'])) {
+			$data['cardconnect_order_status_id_pending'] = $this->request->post['payment_cardconnect_order_status_id_pending'];
 		} elseif ($this->config->has('cardconnect_order_status_id_pending')) {
 			$data['cardconnect_order_status_id_pending'] = $this->config->get('payment_cardconnect_order_status_id_pending');
 		} else {
 			$data['cardconnect_order_status_id_pending'] = '1';
 		}
 
-		if (isset($this->request->post('payment_cardconnect_order_status_id_processing'])) {
-			$data['cardconnect_order_status_id_processing'] = $this->request->post('payment_cardconnect_order_status_id_processing'];
+		if (isset($this->request->post['payment_cardconnect_order_status_id_processing'])) {
+			$data['cardconnect_order_status_id_processing'] = $this->request->post['payment_cardconnect_order_status_id_processing'];
 		} elseif ($this->config->has('cardconnect_order_status_id_processing')) {
 			$data['cardconnect_order_status_id_processing'] = $this->config->get('payment_cardconnect_order_status_id_processing');
 		} else {
@@ -480,19 +480,19 @@ class ControllerExtensionPaymentCardConnect extends Controller {
 			$this->error['payment_cardconnect_merchant_id'] = $this->language->get('error_merchant_id');
 		}
 
-		if (!$this->request->post('payment_cardconnect_api_username']) {
+		if (!$this->request->post['payment_cardconnect_api_username']) {
 			$this->error['cardconnect_api_username'] = $this->language->get('error_api_username');
 		}
 
-		if (!$this->request->post('payment_cardconnect_api_password']) {
+		if (!$this->request->post['payment_cardconnect_api_password']) {
 			$this->error['cardconnect_api_password'] = $this->language->get('error_api_password');
 		}
 
-		if (!$this->request->post('payment_cardconnect_token']) {
+		if (!$this->request->post['payment_cardconnect_token']) {
 			$this->error['cardconnect_token'] = $this->language->get('error_token');
 		}
 
-		if (!$this->request->post('payment_cardconnect_site']) {
+		if (!$this->request->post['payment_cardconnect_site']) {
 			$this->error['cardconnect_site'] = $this->language->get('error_site');
 		}
 

@@ -1,22 +1,4 @@
 {% if payment_pp_express_incontext_disable != 1 %}
-  <style>
-    @media screen and (max-width: 400px) {
-      .pp-checkout-button-container {
-        width: 100%;
-        margin-left:auto;
-        margin-right:auto;
-      }
-    }
-
-    @media screen and (min-width: 400px) {
-      .pp-checkout-button-container {
-        width: 400px;
-        margin-left:auto;
-        margin-right:auto;
-      }
-    }
-  </style>
-
   <div class="buttons">
     <div class="pp-checkout-button-container">
       <div id="pp-checkout-button" />
@@ -27,17 +9,7 @@
     (function () {
       paypal.Button.render({
         env: '{{ paypal_environment }}',
-        style: {
-          layout: '{{ payment_pp_express_style_layout }}',
-          size:   '{{ payment_pp_express_style_size }}',
-          shape:  '{{ payment_pp_express_style_shape }}',
-          color:  '{{ payment_pp_express_style_color }}'
-        },
-        commit: true,
-        funding: {
-          allowed: [{{ allowed_payment_methods }}],
-          disallowed: [{{ disallowed_payment_methods }}]
-        },
+        
         payment: function (data, actions) {
           return paypal.request.get("{{ continue }}", {
             headers: {
@@ -45,12 +17,13 @@
             }
           }).then(function (response) {
             if (!response || !response.token) {
+			  // I don't agree with this method since the response object can already be used
+			  // to output an error by rather using the container.
               throw new Error('There was an error fetching the PayPal token');
             }
-
             return response.token;
           }).catch(function (err) {
-            throw err;
+		    throw err;
           });
         },
         onAuthorize: function (data, actions) {
@@ -73,8 +46,8 @@
     </div>
   </div>
   <script type="text/javascript"><!--
-    $('#button-confirm').on('click', function() {
+  $('#button-confirm').on('click', function() {
       $('#button-confirm').button('loading');
-    });
+  });
   //--></script>
 {% endif %}

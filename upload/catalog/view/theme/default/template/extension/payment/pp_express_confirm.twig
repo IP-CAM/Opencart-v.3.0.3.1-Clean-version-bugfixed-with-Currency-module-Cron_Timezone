@@ -43,19 +43,21 @@
           {% if not shipping_method.error %}
           {% for quote in shipping_method.quote %}
           <div class="radio">
-            <label> {% if quote.code == code or not code %}
+            <label>{% if quote.code == code or not code %}
               {% set code = quote.code %}
               <input type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}" checked="checked" />
               {% else %}
               <input type="radio" name="shipping_method" value="{{ quote.code }}" id="{{ quote.code }}" />
               {% endif %}
-              {{ quote.title }} </label>
+              {{ quote.title }} 
+			</label>
           </div>
           {% endfor %}
           {% else %}
           <div class="warning">{{ shipping_method.error }}</div>
           {% endif %}
-          {% endfor %} </div>
+          {% endfor %} 
+		</div>
       </form>
       {% endif %}
       {% endif %}
@@ -73,10 +75,13 @@
           <tbody>
           {% for product in products %}
           <tr>
-            <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% for option in product.option %} <br />
+            <td class="text-left"><a href="{{ product.href }}">{{ product.name }}</a> {% for option in product.option %} 
+			<br>
               <small> - {{ option.name }}: {{ option.value }}</small> {% endfor %}
-              {% if product.recurring %} <br />
-              <span class="label label-info">{{ text_recurring_item }}</span> <small>{{ product.recurring_description }}</small> {% endif %}</td>
+              {% if product.recurring %} 
+			  <br>
+              <span class="label label-info">{{ text_recurring_item }}</span> 
+			  <small>{{ product.recurring_description }}</small> {% endif %}</td>
             <td class="text-left">{{ product.model }}</td>
             <td class="text-center">{{ product.quantity }}</td>
             <td class="text-right">{{ product.price }}</td>
@@ -119,10 +124,8 @@
 $('input[name=\'shipping_method\']').change(function() {
 	$('#shipping_form').submit();
 });
-
 $('input[name=\'next\']').bind('change', function() {
 	$('.cart-discounts > div').hide();
-
 	$('#' + this.value).show();
 });
 //--></script>

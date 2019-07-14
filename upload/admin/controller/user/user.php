@@ -406,6 +406,8 @@ class ControllerUserUser extends Controller {
 		
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
+		$user_query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE status = 1");
+		$data['disable_status'] = ($user_query->row['total'] > 1) ? false : true;
 		if (isset($this->request->post['status'])) {
 			$data['status'] = $this->request->post['status'];
 		} elseif (!empty($user_info)) {

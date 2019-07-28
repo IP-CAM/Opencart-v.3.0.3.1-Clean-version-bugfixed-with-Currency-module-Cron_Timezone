@@ -14,6 +14,7 @@ class ControllerInstallStep4 extends Controller {
 		$data['text_extension'] = $this->language->get('text_extension');
 		$data['text_mail'] = $this->language->get('text_mail');
 		$data['text_mail_description'] = $this->language->get('text_mail_description');
+		$data['text_maxmind'] = $this->language->get('text_maxmind');
 		$data['text_amazon_pay'] = $this->language->get('text_amazon_pay');
 		$data['text_facebook'] = $this->language->get('text_facebook');
 		$data['text_facebook_description'] = $this->language->get('text_facebook_description');
@@ -43,6 +44,7 @@ class ControllerInstallStep4 extends Controller {
 			$data['success'] = '';
 		}
 
+		$data['maxmind'] = $this->url->link('3rd_party/maxmind');
 		$data['extension'] = $this->url->link('3rd_party/extension');
 
 		$data['footer'] = $this->load->controller('common/footer');

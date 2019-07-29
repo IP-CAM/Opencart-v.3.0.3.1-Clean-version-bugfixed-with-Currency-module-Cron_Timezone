@@ -7,6 +7,8 @@ class ControllerProductSpecial extends Controller {
 
 		$this->load->model('tool/image');
 
+		$data['text_empty'] = $this->language->get('text_empty');
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {

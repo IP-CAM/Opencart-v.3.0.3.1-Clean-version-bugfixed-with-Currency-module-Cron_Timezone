@@ -9,6 +9,8 @@ class ControllerProductSearch extends Controller {
 
 		$this->load->model('tool/image');
 
+		$data['text_empty'] = $this->language->get('text_empty');
+
 		if (isset($this->request->get['search'])) {
 			$search = $this->request->get['search'];
 		} else {

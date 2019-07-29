@@ -63,6 +63,8 @@ class ControllerProductManufacturer extends Controller {
 
 		$this->load->model('tool/image');
 
+		$data['text_empty'] = $this->language->get('text_empty');
+
 		if (isset($this->request->get['manufacturer_id'])) {
 			$manufacturer_id = (int)$this->request->get['manufacturer_id'];
 		} else {

@@ -222,25 +222,13 @@
                   <label class="col-sm-2 control-label" for="input-order-status">{{ entry_order_status }}</label>
                   <div class="col-sm-10">
                     <select name="order_status_id" id="input-order-status" class="form-control">
-                      
-                      
                       {% for order_statuses in order_statuses %}
                       {% if order_statuses.order_status_id == order_status_id %}
-                      
-                      
                       <option value="{{ order_statuses.order_status_id }}" selected="selected">{{ order_statuses.name }}</option>
-                      
-                      
                       {% else %}
-                      
-                      
                       <option value="{{ order_statuses.order_status_id }}">{{ order_statuses.name }}</option>
-                      
-                      
                       {% endif %}
                       {% endfor %}
-                    
-                    
                     </select>
                   </div>
                 </div>
@@ -281,7 +269,6 @@
                   </tr>
                 </thead>
                 <tbody>
-                
                 {% for custom_field in account_custom_fields %}
                 <tr>
                   <td>{{ custom_field.name }}</td>
@@ -289,7 +276,6 @@
                 </tr>
                 {% endfor %}
                   </tbody>
-                
               </table>
             </div>
             {% endif %}
@@ -331,7 +317,6 @@
                 </tr>
                 {% endfor %}
                   </tbody>
-                
               </table>
             </div>
             {% endif %}
@@ -362,7 +347,6 @@
                   <td>{{ accept_language }}</td>
                 </tr>
                   </tbody>
-                
               </table>
             </div>
           </div>
@@ -372,6 +356,156 @@
       </div>
     </div>
   </div>
+<script type="text/javascript"><!--
+$(document).on('click', '#button-invoice', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/createinvoiceno&user_token={{ user_token }}&order_id={{ order_id }}',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-invoice').button('loading');
+		},
+		complete: function() {
+			$('#button-invoice').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['invoice_no']) {
+				$('#invoice').html(json['invoice_no']);
+
+				$('#button-invoice').replaceWith('<button disabled="disabled" class="btn btn-success btn-xs"><i class="fa fa-cog"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$(document).on('click', '#button-reward-add', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/addreward&user_token={{ user_token }}&order_id={{ order_id }}',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-reward-add').button('loading');
+		},
+		complete: function() {
+			$('#button-reward-add').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('#button-reward-add').replaceWith('<button id="button-reward-remove" data-toggle="tooltip" title="{{ button_reward_remove }}" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$(document).on('click', '#button-reward-remove', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/removereward&user_token={{ user_token }}&order_id={{ order_id }}',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-reward-remove').button('loading');
+		},
+		complete: function() {
+			$('#button-reward-remove').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('#button-reward-remove').replaceWith('<button id="button-reward-add" data-toggle="tooltip" title="{{ button_reward_add }}" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$(document).on('click', '#button-commission-add', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/addcommission&user_token={{ user_token }}&order_id={{ order_id }}',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-commission-add').button('loading');
+		},
+		complete: function() {
+			$('#button-commission-add').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('#button-commission-add').replaceWith('<button id="button-commission-remove" data-toggle="tooltip" title="{{ button_commission_remove }}" class="btn btn-danger btn-xs"><i class="fa fa-minus-circle"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
+$(document).on('click', '#button-commission-remove', function() {
+	$.ajax({
+		url: 'index.php?route=sale/order/removecommission&user_token={{ user_token }}&order_id={{ order_id }}',
+		type: 'post',
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-commission-remove').button('loading');
+		},
+		complete: function() {
+			$('#button-commission-remove').button('reset');
+		},
+		success: function(json) {
+			$('.alert-dismissible').remove();
+
+			if (json['error']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('#button-commission-remove').replaceWith('<button id="button-commission-add" data-toggle="tooltip" title="{{ button_commission_add }}" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>');
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+		}
+	});
+});
+
 $('#history').on('click', '.pagination a', function(e) {
 	e.preventDefault();
 
@@ -396,13 +530,13 @@ $('#button-history').on('click', function() {
 			$('.alert-dismissible').remove();
 
 			if (json['error']) {
-				$('#history').before('<div class="alert alert-danger alert-dismissible"><i class="fas fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#history').before('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			}
 
 			if (json['success']) {
 				$('#history').load('index.php?route=sale/order/history&user_token={{ user_token }}&order_id={{ order_id }}');
 
-				$('#history').before('<div class="alert alert-success alert-dismissible"><i class="fas fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('#history').before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
 				$('textarea[name=\'comment\']').val('');
 			}

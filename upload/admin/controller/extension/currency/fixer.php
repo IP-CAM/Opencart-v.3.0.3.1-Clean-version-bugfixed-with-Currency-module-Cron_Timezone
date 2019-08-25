@@ -74,7 +74,7 @@ class ControllerExtensionCurrencyFixer extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if (!$this->request->post['fixer_api']) {
+		if (!$this->request->post['currency_fixer_api']) {
 			$this->error['api'] = $this->language->get('error_api');
 		}
 

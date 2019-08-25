@@ -85,7 +85,7 @@ class ControllerExtensionCurrencyFixer extends Controller {
 		if ($this->config->get('currency_fixer_status')) {
 			$curl = curl_init();
 
-			curl_setopt($curl, CURLOPT_URL, 'http://data.fixer.io/api/latest?access_key=' . $this->config->get('fixer_api'));
+			curl_setopt($curl, CURLOPT_URL, 'http://data.fixer.io/api/latest?access_key=' . $this->config->get('currency_fixer_api'));
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_HEADER, false);
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);

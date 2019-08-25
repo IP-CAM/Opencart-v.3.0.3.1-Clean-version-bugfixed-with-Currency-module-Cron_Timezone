@@ -45,9 +45,9 @@ class ControllerExtensionCurrencyECB extends Controller {
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=currency', true);
 
 		if (isset($this->request->post['currencyecb_status'])) {
-			$data['currencyecb_status'] = $this->request->post['currencyecb_status'];
+			$data['currency_ecb_status'] = $this->request->post['currency_ecb_status'];
 		} else {
-			$data['currencyecb_status'] = $this->config->get('currencyecb_status');
+			$data['currency_ecb_status'] = $this->config->get('currency_ecb_status');
 		}
 
 		$data['header'] = $this->load->controller('common/header');
@@ -66,7 +66,7 @@ class ControllerExtensionCurrencyECB extends Controller {
 	}
 
 	public function currency($default = '') {
-		if ($this->config->get('currencyecb_status')) {
+		if ($this->config->get('currency_ecb_status')) {
 			$curl = curl_init();
 
 			curl_setopt($curl, CURLOPT_URL, 'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml');

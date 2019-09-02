@@ -109,7 +109,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 col-form-label" for="input-shippernumber"><span data-toggle="tooltip" title="{{ help_ups_shippernumber}}">{{ entry_ups_shippernumber }}</span></label>
+            <label class="col-sm-2 control-label" for="input-shippernumber"><span data-toggle="tooltip" title="{{ help_ups_shippernumber}}">{{ entry_ups_shippernumber }}</span></label>
             <div class="col-sm-10">
               <input type="text" name="shipping_ups_shippernumber" value="{{ shipping_ups_shippernumber }}" placeholder="{{ entry_ups_shippernumber }}" id="input-shippernumber" class="form-control"/>
               {% if error_shippernumber %}
@@ -118,7 +118,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 col-form-label"><span data-toggle="tooltip" title="{{ help_use_negotiated_rates }}">{{ entry_use_negotiated_rates }}</span></label>
+            <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_use_negotiated_rates }}">{{ entry_use_negotiated_rates }}</span></label>
             <div class="col-sm-10">
               <label class="radio-inline">
                 {% if shipping_ups_use_negotiated_rates %}
@@ -769,7 +769,7 @@
               <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn btn-link">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn btn-link">{{ text_unselect_all }}</button></div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 col-form-label"><span data-toggle="tooltip" title="{{ help_display_time }}">{{ entry_display_time }}</span></label>
+            <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="{{ help_display_time }}">{{ entry_display_time }}</span></label>
             <div class="col-sm-10">
               <label class="radio-inline">
                 {% if shipping_ups_display_time %}

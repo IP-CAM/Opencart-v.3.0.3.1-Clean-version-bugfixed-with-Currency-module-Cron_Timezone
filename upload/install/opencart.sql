@@ -971,13 +971,14 @@ CREATE TABLE `oc_coupon_product` (
 
 DROP TABLE IF EXISTS `oc_cron`;
 CREATE TABLE `oc_cron` (
-  `cron_id` int(11) NOT NULL,
+  `cron_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(64) NOT NULL,
   `cycle` varchar(12) NOT NULL,
   `action` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
-  `date_modified` datetime NOT NULL
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`cron_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --

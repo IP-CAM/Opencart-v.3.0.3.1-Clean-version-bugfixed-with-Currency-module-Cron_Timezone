@@ -100,6 +100,7 @@ $_['button_order']                  = 'View Order';
 $_['button_order_recurring']        = 'View Recurring Order';
 $_['button_buy']                    = 'Buy';
 $_['button_developer']              = 'Developer Setting';
+$_['button_run']                    = 'Run Cron Job';
 
 // Tab
 $_['tab_affiliate']                 = 'Affiliate';

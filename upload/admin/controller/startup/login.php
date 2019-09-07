@@ -6,7 +6,7 @@ class ControllerStartupLogin extends Controller {
 		$ignore = array(
 			'common/login',
 			'common/forgotten',
-			'common/reset'
+			'common/reset',
 			'common/cron'
 		);
 
@@ -23,7 +23,7 @@ class ControllerStartupLogin extends Controller {
 				'common/logout',
 				'common/forgotten',
 				'common/reset',
-				'common/cron'
+				'common/cron',
 				'error/not_found',
 				'error/permission'
 			);

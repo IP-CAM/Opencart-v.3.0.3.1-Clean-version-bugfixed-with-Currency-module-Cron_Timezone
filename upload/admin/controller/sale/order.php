@@ -649,8 +649,8 @@ class ControllerSaleOrder extends Controller {
 		$custom_fields = $this->model_customer_custom_field->getCustomFields($filter_data);
 
 		foreach ($custom_fields as $custom_field) {
-			$data['custom_fields'][] = array(
 			if ($custom_field['status']) {
+			$data['custom_fields'][] = array(
 				'custom_field_id'    => $custom_field['custom_field_id'],
 				'custom_field_value' => $this->model_customer_custom_field->getCustomFieldValues($custom_field['custom_field_id']),
 				'name'               => $custom_field['name'],

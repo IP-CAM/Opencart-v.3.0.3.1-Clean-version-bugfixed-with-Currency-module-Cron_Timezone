@@ -467,7 +467,7 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		if (!empty($order_info)) {
-			$data['order_id'] = $this->request->get['order_id'];
+			$data['order_id'] = (int)$this->request->get['order_id'];
 			$data['store_id'] = $order_info['store_id'];
 			$data['store_url'] = $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
 
@@ -641,6 +641,7 @@ class ControllerSaleOrder extends Controller {
 		$data['custom_fields'] = array();
 
 		$filter_data = array(
+			'filter_status' => 1,
 			'sort'  => 'cf.sort_order',
 			'order' => 'ASC'
 		);
@@ -649,6 +650,7 @@ class ControllerSaleOrder extends Controller {
 
 		foreach ($custom_fields as $custom_field) {
 			$data['custom_fields'][] = array(
+			if ($custom_field['status']) {
 				'custom_field_id'    => $custom_field['custom_field_id'],
 				'custom_field_value' => $this->model_customer_custom_field->getCustomFieldValues($custom_field['custom_field_id']),
 				'name'               => $custom_field['name'],
@@ -656,7 +658,8 @@ class ControllerSaleOrder extends Controller {
 				'type'               => $custom_field['type'],
 				'location'           => $custom_field['location'],
 				'sort_order'         => $custom_field['sort_order']
-			);
+				);
+			}
 		}
 
 		$this->load->model('localisation/order_status');
@@ -712,12 +715,12 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
 
 		if (isset($this->request->get['order_id'])) {
-			$order_id = $this->request->get['order_id'];
+			$order_id = (int)$this->request->get['order_id'];
 		} else {
 			$order_id = 0;
 		}
 
-		$order_info = $this->model_sale_order->getOrder($order_id);
+		$order_id = (int)$this->request->get['order_id'];
 
 		if ($order_info) {
 			$this->load->language('sale/order');
@@ -1267,15 +1270,15 @@ class ControllerSaleOrder extends Controller {
 
 		$json = array();
 
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
+
 		if (!$this->user->hasPermission('modify', 'sale/order')) {
 			$json['error'] = $this->language->get('error_permission');
-		} elseif (isset($this->request->get['order_id'])) {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
+		} else {
 			$this->load->model('sale/order');
 
 			$invoice_no = $this->model_sale_order->createInvoiceNo($order_id);
@@ -1296,15 +1299,14 @@ class ControllerSaleOrder extends Controller {
 
 		$json = array();
 
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
 		if (!$this->user->hasPermission('modify', 'sale/order')) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
 			$this->load->model('sale/order');
 
 			$order_info = $this->model_sale_order->getOrder($order_id);
@@ -1331,15 +1333,14 @@ class ControllerSaleOrder extends Controller {
 
 		$json = array();
 
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
 		if (!$this->user->hasPermission('modify', 'sale/order')) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
 			$this->load->model('sale/order');
 
 			$order_info = $this->model_sale_order->getOrder($order_id);
@@ -1362,15 +1363,14 @@ class ControllerSaleOrder extends Controller {
 
 		$json = array();
 
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
 		if (!$this->user->hasPermission('modify', 'sale/order')) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
 			$this->load->model('sale/order');
 
 			$order_info = $this->model_sale_order->getOrder($order_id);
@@ -1397,15 +1397,14 @@ class ControllerSaleOrder extends Controller {
 
 		$json = array();
 
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
 		if (!$this->user->hasPermission('modify', 'sale/order')) {
 			$json['error'] = $this->language->get('error_permission');
 		} else {
-			if (isset($this->request->get['order_id'])) {
-				$order_id = $this->request->get['order_id'];
-			} else {
-				$order_id = 0;
-			}
-
 			$this->load->model('sale/order');
 
 			$order_info = $this->model_sale_order->getOrder($order_id);
@@ -1425,6 +1424,12 @@ class ControllerSaleOrder extends Controller {
 
 	public function history() {
 		$this->load->language('sale/order');
+
+		if (isset($this->request->get['order_id'])) {
+			$order_id = $this->request->get['order_id'];
+		} else {
+			$order_id = 0;
+		}
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -1765,7 +1770,7 @@ class ControllerSaleOrder extends Controller {
 				$products = $this->model_sale_order->getOrderProducts($order_id);
 
 				foreach ($products as $product) {
-					$option_weight = '';
+					$option_weight = 0;
 
 					$product_info = $this->model_catalog_product->getProduct($product['product_id']);
 

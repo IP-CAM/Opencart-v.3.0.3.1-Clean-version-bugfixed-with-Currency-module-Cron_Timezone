@@ -57,7 +57,7 @@ $(document).ready(function() {
 		var value = $('header #search input[name=\'search\']').val();
 
 		if (value) {
-			url += '&search=' + encodeURIComponent(value);
+			url += '&search=' + encodeURIComponent(value) + '&description=true';
 		}
 
 		location = url;

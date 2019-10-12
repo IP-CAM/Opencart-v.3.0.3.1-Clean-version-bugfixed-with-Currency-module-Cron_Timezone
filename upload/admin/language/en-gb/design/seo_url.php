@@ -26,5 +26,6 @@ $_['entry_language']   = 'Language';
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify SEO URL!';
 $_['error_query']      = 'Query must be between 3 and 64 characters!';
+$_['error_query_exists']   = 'Query already in use!';
 $_['error_keyword']    = 'Keyword must be between 3 and 64 characters!';
 $_['error_exists']     = 'Keyword already in use!';
